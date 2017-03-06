@@ -1,0 +1,47 @@
+/* istanbul ignore next */'use strict';var _jsxFileName = '/home/dario/Desktop/todoApp/src/components/Container/TodoList/TodoItem/__tests__/TodoItem.spec.js';var /* istanbul ignore next */_react = require('react'); /* istanbul ignore next */var _react2 = _interopRequireDefault(_react);
+var /* istanbul ignore next */_reactDom = require('react-dom'); /* istanbul ignore next */var _reactDom2 = _interopRequireDefault(_reactDom);
+var /* istanbul ignore next */_TodoItem = require('../TodoItem'); /* istanbul ignore next */var _TodoItem2 = _interopRequireDefault(_TodoItem);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+it('montar el componente sin problemas', function () {
+    var todo = {
+        text: 'Todo',
+        selected: false };
+
+    function onSelectItem() {
+    }
+    var div = document.createElement('div');
+    /* istanbul ignore next */_reactDom2.default.render( /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */_TodoItem2.default, /* istanbul ignore next */{ id: 0, todo: todo.text, selected: todo.selected, onSelectItem: onSelectItem, __source: { fileName: _jsxFileName, lineNumber: 13 }, __self: undefined }), div);
+});
+
+describe('Control de estados', function () {
+    var todo = {
+        text: 'Todo',
+        selected: false };
+
+    function onSelectItem() {}
+
+    it(`tener texto: ${todo.text}`, function () {
+        var div = document.createElement('div');
+        /* istanbul ignore next */_reactDom2.default.render( /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */_TodoItem2.default, /* istanbul ignore next */{ id: 0, todo: todo.text, selected: todo.selected, onSelectItem: onSelectItem, __source: { fileName: _jsxFileName, lineNumber: 25 }, __self: undefined }), div);
+        var todoText = div.querySelector('input[type="text"]').value;
+        expect(todoText).toBe(todo.text);
+    });
+
+    it(`no estar seleccionado`, function () {
+        var div = document.createElement('div');
+        /* istanbul ignore next */_reactDom2.default.render( /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */_TodoItem2.default, /* istanbul ignore next */{ id: 0, todo: todo.text, selected: todo.selected, onSelectItem: onSelectItem, __source: { fileName: _jsxFileName, lineNumber: 32 }, __self: undefined }), div);
+        var isChecked = div.querySelector('input[type="checkbox"]').checked;
+        expect(isChecked).toBeFalsy();
+    });
+
+    it(`estar seleccionado`, function () {
+        var todo = {
+            text: 'Todo',
+            selected: true };
+
+        var div = document.createElement('div');
+        /* istanbul ignore next */_reactDom2.default.render( /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */_TodoItem2.default, /* istanbul ignore next */{ id: 0, todo: todo.text, selected: todo.selected, onSelectItem: onSelectItem, __source: { fileName: _jsxFileName, lineNumber: 43 }, __self: undefined }), div);
+        var isChecked = div.querySelector('input[type="checkbox"]').checked;
+        expect(isChecked).toBeTruthy();
+    });
+});

@@ -1,0 +1,15 @@
+{
+  "tests": "./e2e/*.e2e.js",
+  "timeout": 10000,
+  "output": "./e2e/reports",
+  "helpers": {
+    "WebDriverIO": {
+      "url": "http://localhost:8080",
+      "browser": "chrome"
+    }
+  },
+  "include": {},
+  "bootstrap": false,
+  "mocha": {},
+  "name": "todoApp"
+}

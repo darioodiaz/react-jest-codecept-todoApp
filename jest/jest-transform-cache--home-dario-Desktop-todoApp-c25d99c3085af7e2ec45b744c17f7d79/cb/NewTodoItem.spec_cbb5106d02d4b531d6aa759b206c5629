@@ -1,0 +1,25 @@
+/* istanbul ignore next */'use strict';var _jsxFileName = '/home/dario/Desktop/todoApp/src/components/Container/TodoList/NewTodoItem/__tests__/NewTodoItem.spec.js';var /* istanbul ignore next */_react = require('react'); /* istanbul ignore next */var _react2 = _interopRequireDefault(_react);
+var /* istanbul ignore next */_reactDom = require('react-dom'); /* istanbul ignore next */var _reactDom2 = _interopRequireDefault(_reactDom);
+var /* istanbul ignore next */_reactAddonsTestUtils = require('react-addons-test-utils'); /* istanbul ignore next */var _reactAddonsTestUtils2 = _interopRequireDefault(_reactAddonsTestUtils);
+var /* istanbul ignore next */_NewTodoItem = require('../NewTodoItem'); /* istanbul ignore next */var _NewTodoItem2 = _interopRequireDefault(_NewTodoItem);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+it('montar el componente sin problemas', function () {
+    function onNewTodo() {
+    }
+    var div = document.createElement('div');
+    /* istanbul ignore next */_reactDom2.default.render( /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */_NewTodoItem2.default, /* istanbul ignore next */{ onNewTodo: onNewTodo, __source: { fileName: _jsxFileName, lineNumber: 10 }, __self: undefined }), div);
+});
+
+var todoText = 'Todo';
+
+it(`tener texto: ${todoText}`, function () {
+    var onNewTodoSpy = jest.fn();
+    var el = mount( /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */_NewTodoItem2.default, /* istanbul ignore next */{ onNewTodo: onNewTodoSpy, __source: { fileName: _jsxFileName, lineNumber: 17 }, __self: undefined }));
+
+    var _el = el.find('input[type="text"]');
+    _el.simulate('change', { target: { value: todoText } });
+    expect(onNewTodoSpy.mock.calls.length).toBe(1);
+
+    var _todoText = el.find('input[type="text"]').state.todo;
+    expect(_todoText).toBe(todoText);
+});

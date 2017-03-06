@@ -1,0 +1,8 @@
+/* istanbul ignore next */'use strict';var /* istanbul ignore next */_enzyme = require('enzyme');
+global.shallow = /* istanbul ignore next */_enzyme.shallow;
+global.render = /* istanbul ignore next */_enzyme.render;
+global.mount = /* istanbul ignore next */_enzyme.mount;
+
+console.error = function (message) {
+   throw new Error(message);
+};
