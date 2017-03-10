@@ -13,7 +13,7 @@ class NewTodoItem extends Component {
   }
   onChange(event) {
     this.setState({ todo: event.currentTarget.value });
-    this.props.onNewTodo(this.state.todo);
+    this.props.onNewTodo(event.currentTarget.value);
   }
 
   render() {
