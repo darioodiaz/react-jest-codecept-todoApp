@@ -10,6 +10,18 @@ it('montar el componente sin problemas', () => {
     shallow(<TodoItem id={0} todo={todo.text} selected={todo.selected} onSelectItem={jest.fn()} />);
 });
 
+it('actualizar el estado cuando las propiedades cambien y llamar a la funcion componentWillReceiveProps y tener el estado actualizado', () => {
+    const componentWillReceiveProps = jest.fn();
+    const props = { todo: 'Todo', selected: false, onSelectItem: jest.fn(), id: 0 };
+    const newProps = { todo: 'Todo1', selected: true };
+    TodoItem.prototype.componentWillReceiveProps = componentWillReceiveProps;
+    const el = shallow(<TodoItem id={props.id} todo={props.todo} selected={props.selected} onSelectItem={props.onSelectItem} />);
+    el.setProps(newProps);
+    expect(componentWillReceiveProps).toHaveBeenCalledWith(newProps);
+    const state = el.state();
+    expect(state).toBe(newProps);
+});
+
 describe('Control de estados', () => {
     let todo = {
         text: 'Todo predefinido'

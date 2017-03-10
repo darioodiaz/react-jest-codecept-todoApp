@@ -25,6 +25,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "test:e2e": "codeceptjs run --steps",
     "coverage": "react-scripts test --coverage",
     "eject": "react-scripts eject"
   }
