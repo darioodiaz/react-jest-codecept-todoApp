@@ -13,8 +13,35 @@ it('tener la misma cantidad de todos', () => {
     const el = shallow(<TodoList todos={todos} onSelectItem={jest.fn()} />);
     const _todos = el.state().todos;
     _todos.forEach( (item, i) => {
-        expect(item).toBe(todos[i]);
+        expect(item).toEqual(todos[i]);
     });
+});
+
+it('llamar a la funcion onSelectItem', () => {
+    const todos = [{ id: 0, text: 'Todo 0'}];
+    const onSelectItem = jest.fn();
+    const el = shallow(<TodoList todos={todos} onSelectItem={onSelectItem} />);
+    el.instance().onSelectItem(0);
+    expect(onSelectItem).toHaveBeenCalledWith(0);
+});
+
+it('cambiar los todos y tener los mismos cambiados', () => {
+    const todos = [{ id: 0, text: 'Todo 0'}];
+    const newTodos = [{ id: 0, text: 'Todo 0'}, { id: 1, text: 'Todo 1'}];
+    const el = mount(<TodoList todos={todos} onSelectItem={jest.fn()} />);
+    expect(el.state().todos).toEqual(todos);
+    el.setProps({todos: newTodos});
+    expect(el.state().todos).toEqual(newTodos);
+});
+
+it('tener un nuevo todo y llamar a la funcion clearTodo y borrar el estado', () => {
+    const todos = [{ id: 0, text: 'Todo 0'}];
+    const onSelectItem = jest.fn();
+    const el = mount(<TodoList todos={todos} onSelectItem={onSelectItem} />);
+    el.instance().onNewTodo('Todo1');
+    expect(el.state().newTodo).toBe('Todo1');
+    el.instance().clearNewTodo();
+    expect(el.state().newTodo).toBe('');
 });
 
 it('tener un nuevo todo con texto Todo', () => {
@@ -31,5 +58,5 @@ it('tener un nuevo todo con texto Todo y no estar seleccionado', () => {
     const todo = { text: 'Todo', selected: false };
     el.instance().onNewTodo(todo.text);
     const _todo = el.instance().getNewTodo();
-    expect(_todo).toBe(todo);
+    expect(_todo).toEqual(todo);
 });
