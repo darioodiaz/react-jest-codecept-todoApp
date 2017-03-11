@@ -38,7 +38,7 @@ class Container extends Component {
             }
         });
         this.state.todos.splice(_id, 1);
-        this.setState({ idToRemove: null, showRemove: false/*, todos: this.state.todos*/ });
+        this.setState({ idToRemove: null, showRemove: false });
     }
     onClear() {
         this.setState({ todos: [], idToRemove: null, showRemove: false });
