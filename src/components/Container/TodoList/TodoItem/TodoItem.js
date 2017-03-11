@@ -23,7 +23,7 @@ class TodoItem extends Component {
     return (
       <div className={`todo-item ${this.state.selected ? 'todo-item_selected' : ''}`}>
         <input type="checkbox" checked={this.state.selected} onChange={this.onTodoSelect} />
-        <input type="text" readOnly value={this.state.todo} />
+        <input name={`todo-item-${this.props.id}`} type="text" readOnly value={this.state.todo} />
       </div>
     );
   }
