@@ -1,9 +1,10 @@
 
 Feature('Agregar Todo');
 
-Scenario('cargar pagina y ver 3 todos y un todo vacio', (I) => {
+Scenario('agregar un todo "Nuevo" y el campo nuevo todo debe estar vacio', (I) => {
     I.amOnPage('/');
-    I.see('Todo App');
-    I.seeNumberOfElements('.todo-item', 3);
-    I.seeNumberOfElements('txt-new-todo', 1);
+    I.fillField('txt-new-todo', 'Nuevo');
+    I.click('btn-add');
+    I.seeNumberOfElements('.todo-item', 5);
+    I.seeInField('txt-new-todo', '');
 });
