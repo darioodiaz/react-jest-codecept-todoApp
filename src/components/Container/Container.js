@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Component } from 'reflux';
 import TodoList from './TodoList/TodoList';
 import ButtonToolBar from './ButtonToolBar/ButtonToolBar';
+import TodoStore from '../../stores/TodoStore.js';
+import Actions from '../../actions/TodoActions';
 
 class Container extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            todos: [
-                { id: 1, text: 'Todo1' },
-                { id: 2, text: 'Todo2' },
-                { id: 3, text: 'Todo3' }
-            ],
+            todos: [],
             showRemove: false,
             idToRemove: null
         }
+        this.store = TodoStore;
         this.onAdd = this.onAdd.bind(this);
         this.onClear = this.onClear.bind(this);
         this.onRemove = this.onRemove.bind(this);
@@ -24,24 +24,16 @@ class Container extends Component {
     }
     onAdd() {
         let todo = this.refs.todoList.getNewTodo();
-        todo.id = this.state.todos.length + 1;
-        this.state.todos.push(todo);
         this.refs.todoList.clearNewTodo();
-        this.forceUpdate();
+        Actions.addTodo(todo);
     }
     onRemove() {
-        let _id;
-        this.state.todos.forEach((item, i) => {
-            if (item.id === this.state.idToRemove) {
-                _id = i;
-                return;
-            }
-        });
-        this.state.todos.splice(_id, 1);
+        Actions.removeTodo(this.state.idToRemove);
         this.setState({ idToRemove: null, showRemove: false });
     }
     onClear() {
-        this.setState({ todos: [], idToRemove: null, showRemove: false });
+        Actions.clearTodos();
+        this.setState({ idToRemove: null, showRemove: false });
     }
     render() {
         return (

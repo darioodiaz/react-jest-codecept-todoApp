@@ -1,0 +1,52 @@
+exports[`test mostrar el boton Clear con la propiedad showRemove en true 1`] = `
+<div
+  className="button-toolbar">
+  <input
+    name="btn-add"
+    onClick={[Function]}
+    type="button"
+    value="Add" />
+  <input
+    name="btn-clear"
+    onClick={[Function]}
+    type="button"
+    value="Clear" />
+  <input
+    name="btn-remove"
+    onClick={[Function]}
+    type="button"
+    value="Remove" />
+</div>
+`;
+
+exports[`test no mostrar el boton Clear 1`] = `
+<div
+  className="button-toolbar">
+  <input
+    name="btn-add"
+    onClick={[Function]}
+    type="button"
+    value="Add" />
+  <input
+    name="btn-clear"
+    onClick={[Function]}
+    type="button"
+    value="Clear" />
+</div>
+`;
+
+exports[`test no mostrar el boton Clear con la propiedad showRemove en false 1`] = `
+<div
+  className="button-toolbar">
+  <input
+    name="btn-add"
+    onClick={[Function]}
+    type="button"
+    value="Add" />
+  <input
+    name="btn-clear"
+    onClick={[Function]}
+    type="button"
+    value="Clear" />
+</div>
+`;
