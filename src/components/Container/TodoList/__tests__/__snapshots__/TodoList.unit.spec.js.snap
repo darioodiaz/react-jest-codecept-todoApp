@@ -1,0 +1,17 @@
+exports[`test tener la misma cantidad de todos 1`] = `
+<ul
+  className="todo-list">
+  <TodoItem
+    id={0}
+    onSelectItem={[Function]}
+    selected={false}
+    todo="Todo 0" />
+  <TodoItem
+    id={1}
+    onSelectItem={[Function]}
+    selected={false}
+    todo="Todo 1" />
+  <NewTodoItem
+    onNewTodo={[Function]} />
+</ul>
+`;
