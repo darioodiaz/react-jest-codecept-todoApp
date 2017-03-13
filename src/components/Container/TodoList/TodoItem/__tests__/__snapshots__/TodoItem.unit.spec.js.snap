@@ -1,0 +1,74 @@
+exports[`Control de estados estar seleccionado 1`] = `
+<div
+  className="todo-item todo-item_selected">
+  <input
+    checked={true}
+    onChange={[Function]}
+    type="checkbox" />
+  <input
+    name="todo-item-0"
+    readOnly={true}
+    type="text"
+    value="Todo predefinido" />
+</div>
+`;
+
+exports[`Control de estados no estando seleccionado deberia cambia a seleccionado 1`] = `
+<div
+  className="todo-item todo-item_selected">
+  <input
+    checked={true}
+    onChange={[Function]}
+    type="checkbox" />
+  <input
+    name="todo-item-0"
+    readOnly={true}
+    type="text"
+    value="Todo" />
+</div>
+`;
+
+exports[`Control de estados no estar seleccionado 1`] = `
+<div
+  className="todo-item ">
+  <input
+    checked={false}
+    onChange={[Function]}
+    type="checkbox" />
+  <input
+    name="todo-item-0"
+    readOnly={true}
+    type="text"
+    value="Todo predefinido" />
+</div>
+`;
+
+exports[`Control de estados tener texto: Todo predefinido 1`] = `
+<div
+  className="todo-item ">
+  <input
+    checked={false}
+    onChange={[Function]}
+    type="checkbox" />
+  <input
+    name="todo-item-0"
+    readOnly={true}
+    type="text"
+    value="Todo predefinido" />
+</div>
+`;
+
+exports[`test actualizar el estado cuando las propiedades cambien y llamar a la funcion componentWillReceiveProps y tener el estado actualizado 1`] = `
+<div
+  className="todo-item todo-item_selected">
+  <input
+    checked={true}
+    onChange={[Function]}
+    type="checkbox" />
+  <input
+    name="todo-item-0"
+    readOnly={true}
+    type="text"
+    value="Todo1" />
+</div>
+`;

@@ -4,21 +4,22 @@ import ReactTestUtils from 'react-addons-test-utils';
 import TodoList from '../TodoList';
 
 it('montar el componente sin problemas', () => {
-    const todos = [{ id: 0, text: 'Todo 0'}];
+    const todos = [{ id: 0, text: 'Todo 0', selected: false }];
     shallow(<TodoList todos={todos} onSelectItem={jest.fn()} />);
 });
 
 it('tener la misma cantidad de todos', () => {
-    const todos = [{ id: 0, text: 'Todo 0'}, { id: 1, text: 'Todo 1'}];
+    const todos = [{ id: 0, text: 'Todo 0', selected: false }, { id: 1, text: 'Todo 1', selected: false }];
     const el = shallow(<TodoList todos={todos} onSelectItem={jest.fn()} />);
     const _todos = el.state().todos;
-    _todos.forEach( (item, i) => {
+    expect(toJson(el)).toMatchSnapshot();
+    _todos.forEach((item, i) => {
         expect(item).toEqual(todos[i]);
     });
 });
 
 it('llamar a la funcion onSelectItem', () => {
-    const todos = [{ id: 0, text: 'Todo 0'}];
+    const todos = [{ id: 0, text: 'Todo 0', selected: false }];
     const onSelectItem = jest.fn();
     const el = shallow(<TodoList todos={todos} onSelectItem={onSelectItem} />);
     el.instance().onSelectItem(0);
@@ -26,16 +27,16 @@ it('llamar a la funcion onSelectItem', () => {
 });
 
 it('cambiar los todos y tener los mismos cambiados', () => {
-    const todos = [{ id: 0, text: 'Todo 0'}];
-    const newTodos = [{ id: 0, text: 'Todo 0'}, { id: 1, text: 'Todo 1'}];
+    const todos = [{ id: 0, text: 'Todo 0', selected: false }];
+    const newTodos = [{ id: 0, text: 'Todo 0', selected: false }, { id: 1, text: 'Todo 1', selected: false }];
     const el = mount(<TodoList todos={todos} onSelectItem={jest.fn()} />);
     expect(el.state().todos).toEqual(todos);
-    el.setProps({todos: newTodos});
+    el.setProps({ todos: newTodos });
     expect(el.state().todos).toEqual(newTodos);
 });
 
 it('tener un nuevo todo y llamar a la funcion clearTodo y borrar el estado', () => {
-    const todos = [{ id: 0, text: 'Todo 0'}];
+    const todos = [{ id: 0, text: 'Todo 0', selected: false }];
     const onSelectItem = jest.fn();
     const el = mount(<TodoList todos={todos} onSelectItem={onSelectItem} />);
     el.instance().onNewTodo('Todo1');
@@ -45,7 +46,7 @@ it('tener un nuevo todo y llamar a la funcion clearTodo y borrar el estado', () 
 });
 
 it('tener un nuevo todo con texto Todo', () => {
-    const todos = [{ id: 0, text: 'Todo 0'}, { id: 1, text: 'Todo 1'}];
+    const todos = [{ id: 0, text: 'Todo 0', selected: false }, { id: 1, text: 'Todo 1', selected: false }];
     const el = shallow(<TodoList todos={todos} onSelectItem={jest.fn()} onNewTodo={jest.fn()} />);
     el.instance().onNewTodo('Todo');
     const todo = el.state().newTodo;
@@ -53,7 +54,7 @@ it('tener un nuevo todo con texto Todo', () => {
 });
 
 it('tener un nuevo todo con texto Todo y no estar seleccionado', () => {
-    const todos = [{ id: 0, text: 'Todo 0'}, { id: 1, text: 'Todo 1'}];
+    const todos = [{ id: 0, text: 'Todo 0', selected: false }, { id: 1, text: 'Todo 1', selected: false }];
     const el = shallow(<TodoList todos={todos} onSelectItem={jest.fn()} onNewTodo={jest.fn()} />);
     const todo = { text: 'Todo', selected: false };
     el.instance().onNewTodo(todo.text);
